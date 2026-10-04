@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>自動故事生成器</title>
+    <style>
+        /* 網頁基本樣式設定 */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        .container {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .story-output {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e9ecef;
+            border-left: 5px solid #007bff;
+            border-radius: 4px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>自動故事生成器</h1>
+    
+    <!-- 輸入欄位：人事時地物 -->
+    <div class="form-group">
+        <label for="person">人 (角色名稱)：</label>
+        <input type="text" id="person" placeholder="例如：小明">
+    </div>
+    <div class="form-group">
+        <label for="time">時 (時間)：</label>
+        <input type="text" id="time" placeholder="例如：一個陽光明媚的午後">
+    </div>
+    <div class="form-group">
+        <label for="place">地 (地點)：</label>
+        <input type="text" id="place" placeholder="例如：神秘森林深處">
+    </div>
+    <div class="form-group">
+        <label for="action">事 (發生的事情)：</label>
+        <input type="text" id="action" placeholder="例如：尋找傳說中的寶藏">
+    </div>
+    <div class="form-group">
+        <label for="item">物 (相關物品)：</label>
+        <input type="text" id="item" placeholder="例如：一把古老的鑰匙">
+    </div>
+
+    <button onclick="generateStory()">生成故事</button>
+
+    <!-- 故事顯示區域 -->
+    <div class="story-output" id="storyOutput">
+        請填寫上方欄位並點擊按鈕，故事將在此處顯示...
+    </div>
+</div>
+
+<script>
+    // 故事生成邏輯
+    function generateStory() {
+        // 1. 獲取使用者輸入的數值 (若未輸入則使用預設值)
+        const person = document.getElementById('person').value.trim() || '神秘主角';
+        const time = document.getElementById('time').value.trim() || '很久很久以前';
+        const place = document.getElementById('place').value.trim() || '未知的角落';
+        const action = document.getElementById('action').value.trim() || '進行一場冒險';
+        const item = document.getElementById('item').value.trim() || '神秘的物品';
+
+        // 2. 組成故事模板 (可在此自訂故事內文與邏輯)
+        const story = `在${time}，${person}獨自來到${place}。在那裡，${person}正在嘗試${action}。就在這個關鍵時刻，${person}意外發現了手中的${item}發出了微弱的光芒，這將永遠改變接下來發生的一切...`;
+
+        // 3. 將故事渲染到網頁上
+        document.getElementById('storyOutput').innerText = story;
+    }
+</script>
+
+</body>
+</html>
